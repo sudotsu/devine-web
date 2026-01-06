@@ -72,9 +72,9 @@ export default function Home() {
 
           <div className="relative group animate-in fade-in zoom-in duration-1000">
             <div className="absolute inset-0 bg-primary/20 rounded-[4rem] rotate-6 blur-2xl group-hover:rotate-12 transition-transform duration-700"></div>
-            <div className="relative aspect-square w-full max-w-lg mx-auto overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-bg-card flex items-center justify-center text-text-soft/20 italic">
+            <div className="relative aspect-square w-full max-w-lg mx-auto overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-bg-card flex items-center justify-center">
               <div className="absolute inset-0 bg-linear-to-tr from-bg-dark/80 via-transparent to-transparent z-10"></div>
-              <img src="/tanya-hero-placeholder.png" alt="Tanya's Professional Cleaning" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-4000" />
+              <img src="/hero-illustration.png" alt="Charismatic Cleaning Specialist Illustration" className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-4000" />
             </div>
             {/* Trust Badge Floating */}
             <div className="absolute -bottom-6 -right-6 bg-bg-card p-6 rounded-3xl border border-accent-pink/5 shadow-2xl animate-float hover:scale-105 transition-transform duration-500">
