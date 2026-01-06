@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #9D4B38; /* Soft Terracotta */
+  --color-bg-warm: #FAF7F2; /* Warm Cream */
+  --color-accent-sage: #7D8B7B; /* Sage Green */
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Outfit", sans-serif;
+}
+
+:root {
+  background-color: var(--color-bg-warm);
+  color: #1a1a1a;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
