@@ -62,11 +62,11 @@ export default async function LocationPage({ params }: Props) {
           {/* Hero Section for Location */}
           <section className="relative group">
             <div className="absolute inset-0 bg-primary/5 rounded-[4rem] blur-3xl -z-10 animate-pulse"></div>
-            <div className="bg-bg-card rounded-[3.5rem] p-10 lg:p-20 border border-white/5 shadow-2xl relative overflow-hidden">
+            <div className="bg-bg-card rounded-[3.5rem] p-10 lg:p-20 border border-accent-pink/5 shadow-2xl relative overflow-hidden">
                <div className="absolute top-0 right-0 p-12 opacity-5 -rotate-12 select-none pointer-events-none">
                   <MapPin size={200} />
                </div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10 text-accent-sage text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-pink/5 rounded-full border border-accent-pink/10 text-accent-pink text-[10px] font-black uppercase tracking-[0.3em] mb-10">
                 <MapPin size={14} />
                 <span>Serving {location.name}</span>
               </div>
@@ -117,7 +117,7 @@ export default async function LocationPage({ params }: Props) {
             </div>
 
             <div className="bg-bg-card rounded-[3rem] p-12 lg:p-16 border border-white/5 shadow-xl hover:-translate-y-2 transition-transform duration-500">
-              <div className="w-16 h-16 bg-accent-sage/20 rounded-2xl flex items-center justify-center text-accent-sage mb-8 border border-accent-sage/20">
+              <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary mb-8 border border-primary/20">
                 <MessageSquare size={32} />
               </div>
               <h2 className="text-4xl font-serif font-bold mb-6 text-text-soft">{location.name} FAQ</h2>

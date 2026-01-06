@@ -49,6 +49,10 @@ export default function ServicesPage() {
           <Link href="/" className="text-primary font-bold mb-10 inline-flex items-center gap-2 hover:opacity-70 transition-opacity uppercase tracking-widest text-xs">
             ← Back to Home
           </Link>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent-pink/5 rounded-full border border-accent-pink/10 text-accent-pink text-[9px] font-black uppercase tracking-[0.4em] mb-8">
+            <div className="w-1 h-1 rounded-full bg-accent-pink animate-pulse" />
+            Selection
+          </div>
           <h1 className="text-6xl lg:text-7xl font-serif font-bold text-text-soft leading-tight">Plain Language Services</h1>
           <p className="mt-6 text-xl text-text-soft/40 max-w-2xl mx-auto font-medium">No confusing packages. Just clear, professional results for every corner of your life.</p>
         </div>
@@ -58,7 +62,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((s, i) => (
-              <div key={i} className="group flex flex-col bg-bg-card p-10 rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+              <div key={i} className="group flex flex-col bg-bg-card p-10 rounded-[2.5rem] border border-accent-pink/5 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 border border-white/5 group-hover:border-primary/20">
                   {s.icon}
                 </div>
@@ -84,7 +88,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="mt-32 relative group">
-            <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-[3rem] -z-10 animate-pulse"></div>
+            <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-[3rem] -z-10"></div>
             <div className="bg-primary text-bg-dark p-16 lg:p-24 rounded-[3.5rem] text-center shadow-2xl shadow-primary/40 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-12 opacity-10 rotate-12">
                 <SprayCan size={200} />

@@ -21,12 +21,12 @@ export default function LocationsPage() {
           </div>
           <span className="text-xl font-serif font-bold text-primary group-hover:tracking-wider transition-all">Devine Sparkle</span>
         </Link>
-        <Link href="/tool" className="text-xs font-bold uppercase tracking-[0.2em] text-accent-sage hover:text-primary transition-colors">Reality Check tool</Link>
+        <Link href="/tool" className="text-xs font-bold uppercase tracking-[0.2em] text-accent-grey hover:text-primary transition-colors">Reality Check tool</Link>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-20 lg:py-32">
         <div className="max-w-3xl mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-accent-sage text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-pink/5 rounded-full border border-accent-pink/10 text-accent-pink text-[10px] font-black uppercase tracking-[0.3em] mb-8">
             <MapPin size={12} className="animate-pulse" />
             Omaha Coverage
           </div>
@@ -43,7 +43,7 @@ export default function LocationsPage() {
             <Link
               key={loc.slug}
               href={`/locations/${loc.slug}`}
-              className="group bg-bg-card rounded-[2.5rem] p-10 border border-white/5 shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2"
+              className="group bg-bg-card rounded-[2.5rem] p-10 border border-accent-pink/5 shadow-2xl hover:border-primary/30 transition-all duration-500 hover:-translate-y-2"
             >
               <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 border border-white/5 group-hover:border-primary/20">
                 <MapPin size={24} />

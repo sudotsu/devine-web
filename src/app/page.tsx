@@ -13,7 +13,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-serif font-bold text-primary leading-tight">Devine</span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-accent-sage font-sans font-bold">Sparkle & Shine</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-accent-grey font-sans font-bold">Sparkle & Shine</span>
             </div>
           </div>
 
@@ -37,12 +37,12 @@ export default function Home() {
       <section className="relative py-24 lg:py-40 overflow-hidden">
         {/* Subtle Background Glows */}
         <div className="absolute top-0 right-0 w-125 h-125 bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-100 h-100 bg-accent-sage/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-100 h-100 bg-accent-pink/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2"></div>
 
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
           <div className="z-10 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-accent-sage text-xs font-bold uppercase tracking-widest mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-sage animate-pulse"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-accent-grey text-xs font-bold uppercase tracking-widest mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-pink animate-pulse"></span>
               Omaha's Premium Personal Choice
             </div>
             <h1 className="text-6xl lg:text-8xl font-serif font-bold leading-[1.1] text-text-soft animate-in fade-in slide-in-from-left-8 duration-1000 delay-200">
@@ -77,9 +77,9 @@ export default function Home() {
               [Photo of Tanya in a sunlit Omaha home]
             </div>
             {/* Trust Badge Floating */}
-            <div className="absolute -bottom-6 -right-6 bg-bg-card p-6 rounded-3xl border border-white/10 shadow-2xl animate-bounce duration-3000">
+            <div className="absolute -bottom-6 -right-6 bg-bg-card p-6 rounded-3xl border border-accent-pink/5 shadow-2xl animate-float hover:scale-105 transition-transform duration-500">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-accent-sage/20 rounded-2xl flex items-center justify-center text-accent-sage">
+                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
                   <CheckCircle size={28} />
                 </div>
                 <div>
@@ -159,7 +159,7 @@ export default function Home() {
             </div>
 
             <div className="mt-12 text-center group">
-              <Link href="/locations" className="text-xs font-bold text-accent-sage/60 uppercase tracking-[0.3em] hover:text-primary transition-all border-b border-accent-sage/20 pb-2 group-hover:border-primary">
+              <Link href="/locations" className="text-xs font-bold text-accent-grey/60 uppercase tracking-[0.3em] hover:text-primary transition-all border-b border-white/5 pb-2 group-hover:border-primary">
                 Explore all served Omaha neighborhoods
               </Link>
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
 
       {/* Floating Bottom Dock (Mobile) */}
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
-        <div className="bg-bg-card/80 backdrop-blur-2xl border border-white/10 rounded-full p-2 flex items-center justify-between shadow-2xl">
+        <div className="bg-bg-card/80 backdrop-blur-2xl border border-accent-pink/5 rounded-full p-2 flex items-center justify-between shadow-2xl">
           <Link href="/tool" className="px-6 text-sm font-bold text-text-soft/60">Reality tool</Link>
           <a href="sms:+14020000000" className="bg-primary text-bg-dark px-6 py-3 rounded-full font-black text-sm">Text Tanya Now</a>
         </div>

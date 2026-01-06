@@ -132,7 +132,7 @@ export default function RealityCheckTool() {
                       transition={{ duration: 0.8, ease: "circOut" }}
                     />
                   </div>
-                  <span className="text-accent-sage font-black uppercase tracking-[0.3em] text-[10px]">
+                  <span className="text-accent-pink font-black uppercase tracking-[0.3em] text-[10px]">
                     Step {currentStep + 1}/{currentSteps.length}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function RealityCheckTool() {
               className="text-center space-y-10"
             >
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150 animate-pulse"></div>
+                <div className="absolute inset-0 bg-primary/10 blur-2xl rounded-full scale-150"></div>
                 <div className="w-24 h-24 bg-primary text-bg-dark rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl">
                   <Check size={48} strokeWidth={3} />
                 </div>
@@ -213,10 +213,10 @@ export default function RealityCheckTool() {
                 </button>
               </div>
 
-              <div className="bg-accent-sage/5 p-6 rounded-4xl flex gap-4 text-left border border-accent-sage/10">
-                <AlertCircle className="text-accent-sage shrink-0" size={24} />
-                <p className="text-sm text-accent-sage/60 font-medium leading-relaxed">
-                  <strong>Tanya's Pro Tip:</strong> Most quotes are finished in under 60 minutes. Feel free to snap 2-3 photos of your space right after sending this text!
+              <div className="bg-primary/5 p-6 rounded-4xl flex gap-4 text-left border border-accent-pink/5">
+                <AlertCircle className="text-primary shrink-0" size={24} />
+                <p className="text-sm text-text-soft/40 font-bold leading-relaxed">
+                  <strong className="text-text-soft">Tanya's Pro Tip:</strong> Most quotes are finished in under 60 minutes. Feel free to snap 2-3 photos of your space right after sending this text!
                 </p>
               </div>
             </motion.div>

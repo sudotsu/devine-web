@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-10">
             <div className="space-y-5">
-              <span className="text-accent-sage font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">The Story</span>
+              <span className="text-accent-pink font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">The Story</span>
               <h1 className="text-6xl lg:text-7xl font-serif font-bold text-text-soft leading-tight">Personal, Local, <br />and owner-operated.</h1>
             </div>
 
@@ -57,9 +57,9 @@ export default function AboutPage() {
             <div className="relative aspect-4/5 bg-bg-card rounded-[3rem] border border-white/10 shadow-2xl overflow-hidden flex items-center justify-center text-text-soft/20 italic font-serif z-10">
               [Tanya at work in Omaha]
             </div>
-            <div className="absolute -bottom-10 -left-10 p-10 rounded-[2.5rem] shadow-2xl max-w-sm border border-white/10 z-20 backdrop-blur-xl bg-bg-card/90">
+            <div className="absolute -bottom-10 -left-10 p-10 rounded-[2.5rem] shadow-2xl max-w-sm border border-accent-pink/5 z-20 backdrop-blur-xl bg-bg-card/90">
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-10 h-10 bg-accent-sage/20 rounded-xl flex items-center justify-center text-accent-sage">
+                <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
                   <MapPin size={24} />
                 </div>
                 <span className="font-bold text-text-soft tracking-wider">Omaha Native</span>
