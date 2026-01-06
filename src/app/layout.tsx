@@ -31,6 +31,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: '#1a1a1a',
+  colorScheme: 'dark',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -73,7 +78,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${playfair.variable} ${outfit.variable}`}>
-      <body className="antialiased min-h-screen bg-bg-warm">
+      <body className="antialiased min-h-screen bg-bg-dark">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

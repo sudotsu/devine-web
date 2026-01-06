@@ -3,18 +3,20 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-bg-warm">
-      <div className="container mx-auto px-4 py-20">
-        <Link href="/" className="text-primary font-bold mb-8 inline-block hover:underline">← Home</Link>
+    <main className="min-h-screen bg-bg-dark text-text-soft selection:bg-primary/30">
+      <div className="container mx-auto px-4 py-24">
+        <Link href="/" className="text-primary font-bold mb-12 inline-flex items-center gap-2 hover:opacity-70 transition-opacity uppercase tracking-widest text-xs">
+          ← Back to Home
+        </Link>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <span className="text-accent-sage font-bold uppercase tracking-widest text-sm">The Story</span>
-              <h1 className="text-5xl lg:text-6xl font-serif font-bold text-[#2d1e1a]">Personal, Local, <br />and Owner-Operated.</h1>
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
+          <div className="space-y-10">
+            <div className="space-y-5">
+              <span className="text-accent-sage font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">The Story</span>
+              <h1 className="text-6xl lg:text-7xl font-serif font-bold text-text-soft leading-tight">Personal, Local, <br />and owner-operated.</h1>
             </div>
 
-            <div className="prose prose-lg text-gray-700 leading-relaxed space-y-6">
+            <div className="prose prose-invert prose-lg text-text-soft/60 leading-relaxed space-y-8 font-medium">
               <p>
                 Hi, I'm Tanya. I started Devine Sparkle & Shine because I saw a gap in the Omaha market.
                 Everything felt corporate, transactional, and lacked the personal touch that a home deserves.
@@ -31,31 +33,38 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-6 pt-8">
-              <div className="p-6 bg-white rounded-2xl shadow-sm border border-primary/5">
-                <Heart className="text-primary mb-4" size={24} />
-                <h3 className="font-bold text-lg mb-2">Personal Care</h3>
-                <p className="text-sm text-gray-600">No scripts. No templates. Just a clean home by people who care.</p>
+            <div className="grid sm:grid-cols-2 gap-8 pt-10">
+              <div className="group p-8 bg-bg-card rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all duration-500">
+                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <Heart size={28} />
+                </div>
+                <h3 className="font-bold text-xl mb-3 text-text-soft">Personal Care</h3>
+                <p className="text-sm text-text-soft/40 italic">No scripts. No templates. Just a clean home by people who care.</p>
               </div>
-              <div className="p-6 bg-white rounded-2xl shadow-sm border border-primary/5">
-                <ShieldCheck className="text-primary mb-4" size={24} />
-                <h3 className="font-bold text-lg mb-2">Direct Accountability</h3>
-                <p className="text-sm text-gray-600">I am your point of contact. If it's not perfect, I make it right.</p>
+              <div className="group p-8 bg-bg-card rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all duration-500">
+                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                  <ShieldCheck size={28} />
+                </div>
+                <h3 className="font-bold text-xl mb-3 text-text-soft">Direct Trust</h3>
+                <p className="text-sm text-text-soft/40 italic">I am your point of contact. If it's not perfect, I make it right.</p>
               </div>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-primary/10 rounded-[4rem] group-hover:rotate-2 transition-transform duration-700 blur-2xl"></div>
              {/* Placeholder for Tanya photo */}
-            <div className="aspect-4/5 bg-gray-200 rounded-[3rem] shadow-2xl overflow-hidden flex items-center justify-center text-gray-400 italic font-serif">
+            <div className="relative aspect-4/5 bg-bg-card rounded-[3rem] border border-white/10 shadow-2xl overflow-hidden flex items-center justify-center text-text-soft/20 italic font-serif z-10">
               [Tanya at work in Omaha]
             </div>
-            <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-3xl shadow-xl max-w-xs border border-primary/10">
-              <div className="flex items-center gap-3 mb-4">
-                <MapPin className="text-primary" size={20} />
-                <span className="font-bold">Born & Raised in Omaha</span>
+            <div className="absolute -bottom-10 -left-10 p-10 rounded-[2.5rem] shadow-2xl max-w-sm border border-white/10 z-20 backdrop-blur-xl bg-bg-card/90">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-10 h-10 bg-accent-sage/20 rounded-xl flex items-center justify-center text-accent-sage">
+                  <MapPin size={24} />
+                </div>
+                <span className="font-bold text-text-soft tracking-wider">Omaha Native</span>
               </div>
-              <p className="text-sm text-gray-600 italic">"I know these neighborhoods because I live in them. Serving my community is the best part of the job."</p>
+              <p className="text-sm text-text-soft/50 italic font-medium leading-relaxed">"I know these neighborhoods because I live in them. Serving my community is the best part of the job."</p>
             </div>
           </div>
         </div>

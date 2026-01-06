@@ -48,81 +48,87 @@ export default async function LocationPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-bg-warm font-sans text-gray-900">
-      <header className="py-8 px-6 max-w-4xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity font-medium">
-          <ArrowLeft size={18} />
-          <span>Back to Home</span>
+    <div className="min-h-screen bg-bg-dark text-text-soft selection:bg-primary/30">
+      <header className="py-10 px-6 max-w-5xl mx-auto flex items-center justify-between">
+        <Link href="/locations" className="group flex items-center gap-2 text-primary font-bold hover:opacity-70 transition-opacity uppercase tracking-widest text-[10px]">
+          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+          <span>All Neighborhoods</span>
         </Link>
-        <div className="text-xl font-serif text-primary italic">Devine Sparkle</div>
+        <Link href="/" className="text-xl font-serif text-primary font-bold">Devine Sparkle</Link>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        <div className="flex flex-col gap-8">
+      <main className="max-w-5xl mx-auto px-6 py-20 lg:py-32">
+        <div className="flex flex-col gap-16 lg:gap-24">
           {/* Hero Section for Location */}
-          <section className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-stone-100">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-stone-50 rounded-full text-stone-600 text-sm font-medium mb-6">
-              <MapPin size={16} />
-              <span>Serving {location.name}, Omaha, NE</span>
-            </div>
+          <section className="relative group">
+            <div className="absolute inset-0 bg-primary/5 rounded-[4rem] blur-3xl -z-10 animate-pulse"></div>
+            <div className="bg-bg-card rounded-[3.5rem] p-10 lg:p-20 border border-white/5 shadow-2xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-12 opacity-5 -rotate-12 select-none pointer-events-none">
+                  <MapPin size={200} />
+               </div>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full border border-white/10 text-accent-sage text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+                <MapPin size={14} />
+                <span>Serving {location.name}</span>
+              </div>
 
-            <h1 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6 leading-tight">
-              Personal Cleaning Excellence in <span className="text-primary italic">{location.name}</span>
-            </h1>
+              <h1 className="text-6xl lg:text-7xl font-serif font-bold text-text-soft mb-10 leading-[1.1]">
+                Personal Excellence in <span className="text-primary italic">{location.name}</span>
+              </h1>
 
-            <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl">
-              {location.localPain} {location.localProof} We specialize in <span className="font-semibold text-gray-900">{location.serviceEmphasis}</span> tailored for this historic neighborhood near {location.landmark}.
-            </p>
+              <p className="text-xl text-text-soft/40 leading-relaxed mb-12 max-w-3xl font-medium">
+                {location.localPain} {location.localProof} We specialize in <span className="text-text-soft font-bold italic underline decoration-primary/30 underline-offset-8">{location.serviceEmphasis}</span> tailored for this historic neighborhood near {location.landmark}.
+              </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/quote" className="bg-primary text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-primary/20">
-                Get Your {location.name} Quote
-              </Link>
-              <Link href="/services" className="px-8 py-4 rounded-full border border-stone-200 font-semibold hover:bg-stone-50 transition-colors">
-                View Services
-              </Link>
+              <div className="flex flex-wrap gap-6 pt-5">
+                <Link href="/tool" className="bg-primary text-bg-dark px-10 py-5 rounded-full font-black text-xl hover:scale-[1.03] transition-all shadow-2xl shadow-primary/30 active:scale-95">
+                  Get Your {location.name} Quote
+                </Link>
+                <Link href="/services" className="px-10 py-5 rounded-full border border-white/10 text-text-soft font-bold hover:bg-white/5 transition-all text-xl">
+                  Our Services
+                </Link>
+              </div>
             </div>
           </section>
 
           {/* Unique Local Section */}
-          <section className="grid md:grid-cols-2 gap-8">
-            <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm mb-6">
-                <CheckCircle2 size={24} />
+          <section className="grid md:grid-cols-2 gap-10 lg:gap-16">
+            <div className="bg-bg-card rounded-[3rem] p-12 lg:p-16 border border-white/5 shadow-xl hover:-translate-y-2 transition-transform duration-500">
+              <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-8 border border-primary/20">
+                <CheckCircle2 size={32} />
               </div>
-              <h2 className="text-2xl font-serif mb-4">Why {location.name} Trusts Tanya</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-4xl font-serif font-bold mb-6 text-text-soft">The {location.name} Trust</h2>
+              <p className="text-lg text-text-soft/50 mb-10 leading-relaxed font-medium">
                 {location.name} isn't just another service area for us—it's part of our home. We understand the specific needs of {location.name} residents, from handling the unique dust patterns near {location.landmark} to the specific scheduling needs of local professionals.
               </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-stone-700">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+              <ul className="space-y-5">
+                <li className="flex items-center gap-4 text-text-soft/60 font-bold tracking-tight">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
                   <span>Locally operated (No franchise scripts)</span>
                 </li>
-                <li className="flex items-center gap-3 text-stone-700">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <li className="flex items-center gap-4 text-text-soft/60 font-bold tracking-tight">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
                   <span>Vetted by your {location.name} neighbors</span>
                 </li>
-                <li className="flex items-center gap-3 text-stone-700">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span>Custom plans for {location.name} homes</span>
+                <li className="flex items-center gap-4 text-text-soft/60 font-bold tracking-tight">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  <span>Custom plans for {location.name} estates</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-stone-900 rounded-3xl p-8 text-white">
-              <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-primary shadow-sm mb-6">
-                <MessageSquare size={24} />
+            <div className="bg-bg-card rounded-[3rem] p-12 lg:p-16 border border-white/5 shadow-xl hover:-translate-y-2 transition-transform duration-500">
+              <div className="w-16 h-16 bg-accent-sage/20 rounded-2xl flex items-center justify-center text-accent-sage mb-8 border border-accent-sage/20">
+                <MessageSquare size={32} />
               </div>
-              <h2 className="text-2xl font-serif mb-4">{location.name} Neighborhood FAQ</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-primary mb-2">Q: {location.faqPair.q}</h3>
-                  <p className="text-stone-400 text-sm leading-relaxed">{location.faqPair.a}</p>
+              <h2 className="text-4xl font-serif font-bold mb-6 text-text-soft">{location.name} FAQ</h2>
+              <div className="space-y-10">
+                <div className="group">
+                  <h3 className="font-bold text-primary mb-3 uppercase tracking-widest text-xs group-hover:tracking-widest transition-all">Q: {location.faqPair.q}</h3>
+                  <p className="text-text-soft/40 text-lg leading-relaxed font-medium">{location.faqPair.a}</p>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-primary mb-2">Q: How soon can Tanya visit my {location.name} home?</h3>
-                  <p className="text-stone-400 text-sm leading-relaxed">We usually have availability within 3-5 business days for initial deep climbs in the area.</p>
+                <div className="group">
+                  <h3 className="font-bold text-primary mb-3 uppercase tracking-widest text-xs group-hover:tracking-widest transition-all">Q: How soon can Tanya visit my {location.name} home?</h3>
+                  <p className="text-text-soft/40 text-lg leading-relaxed font-medium">We usually have availability within 3-5 business days for initial deep resets in the area.</p>
                 </div>
               </div>
             </div>
@@ -130,13 +136,13 @@ export default async function LocationPage({ params }: Props) {
         </div>
       </main>
 
-      <footer className="py-12 px-6 border-t border-stone-100 mt-12 bg-white/50">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-stone-400 text-sm">© 2026 Devine Sparkle & Shine. All Omaha neighborhoods served.</div>
-          <div className="flex gap-6 text-sm font-medium text-stone-600">
-            <Link href="/" className="hover:text-primary">Home</Link>
-            <Link href="/services" className="hover:text-primary">Services</Link>
-            <Link href="/about" className="hover:text-primary">About</Link>
+      <footer className="py-20 px-6 border-t border-white/5 mt-32 text-center">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="text-text-soft/20 text-xs font-black uppercase tracking-[0.4em]">© 2026 Devine Sparkle • {location.name}</div>
+          <div className="flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-text-soft/40">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link href="/services" className="hover:text-primary transition-colors">Services</Link>
+            <Link href="/about" className="hover:text-primary transition-colors">About</Link>
           </div>
         </div>
       </footer>

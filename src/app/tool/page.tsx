@@ -1,53 +1,85 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertCircle, ArrowRight, Check, Home, MessageSquare, Scissors, SprayCan, Trash2 } from "lucide-react";
+import { AlertCircle, ArrowRight, Check, Home, MessageSquare, SprayCan, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-const steps = [
-  {
-    id: "type",
-    title: "What are we cleaning?",
-    options: [
-      { id: "residential", label: "Residential Home", icon: <Home size={24} /> },
-      { id: "commercial", label: "Office / Commercial", icon: <SprayCan size={24} /> },
-      { id: "moveout", label: "Move-Out / Deep Clean", icon: <Trash2 size={24} /> },
-      { id: "other", label: "Specific Project (Garage, Windows, etc.)", icon: <Scissors size={24} /> },
-    ]
-  },
-  {
-    id: "size",
-    title: "About how big is the space?",
-    options: [
-      { id: "small", label: "Studio / 1-2 Bedroom", icon: null },
-      { id: "medium", label: "3-4 Bedroom / Standard House", icon: null },
-      { id: "large", label: "Large Estate / 5+ Bedroom", icon: null },
-      { id: "commercial", label: "Commercial Square Footage", icon: null },
-    ]
-  },
-  {
-    id: "priority",
-    title: "What's the main focus?",
-    options: [
-      { id: "kitchen", label: "Kitchen & Bathrooms", icon: null },
-      { id: "floors", label: "Floors & Dusting", icon: null },
-      { id: "declutter", label: "Decluttering / Junk removal", icon: null },
-      { id: "whole", label: "Whole Home Shine", icon: null },
-    ]
-  }
-];
 
 export default function RealityCheckTool() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isFinished, setIsFinished] = useState(false);
 
+  // Define steps dynamically based on previous answers
+  const getSteps = () => {
+    const baseSteps = [
+      {
+        id: "type",
+        title: "Clean type?",
+        options: [
+          { id: "residential", label: "Residential Home", icon: <Home size={24} /> },
+          { id: "commercial", label: "Office / Business", icon: <SprayCan size={24} /> },
+          { id: "moveout", label: "Move-Out / Deep", icon: <Trash2 size={24} /> },
+        ]
+      }
+    ];
+
+    if (answers.type === "commercial") {
+      return [
+        ...baseSteps,
+        {
+          id: "businessType",
+          title: "Facility Type?",
+          options: [
+            { id: "office", label: "Professional Office", icon: null },
+            { id: "retail", label: "Retail / Boutique", icon: null },
+            { id: "medical", label: "Medical / Wellness", icon: null },
+            { id: "other", label: "Other Workspace", icon: null },
+          ]
+        },
+        {
+          id: "frequency",
+          title: "Visit Frequency?",
+          options: [
+            { id: "daily", label: "Daily Maintenance", icon: null },
+            { id: "weekly", label: "Once a Week", icon: null },
+            { id: "periodic", label: "Monthly Deep Clean", icon: null },
+          ]
+        }
+      ];
+    }
+
+    return [
+      ...baseSteps,
+      {
+        id: "size",
+        title: "Home Size?",
+        options: [
+          { id: "small", label: "Studio / 1-2 Bed", icon: null },
+          { id: "medium", label: "3-4 Bed House", icon: null },
+          { id: "large", label: "Large Estate", icon: null },
+        ]
+      },
+      {
+        id: "priority",
+        title: "Main Focus?",
+        options: [
+          { id: "kitchen", label: "Kitchen & Bathrooms", icon: null },
+          { id: "floors", label: "Floors & Surfaces", icon: null },
+          { id: "whole", label: "Whole Home Shine", icon: null },
+        ]
+      }
+    ];
+  };
+
+  const currentSteps = getSteps();
+
   const handleSelect = (optionId: string) => {
-    const newAnswers = { ...answers, [steps[currentStep].id]: optionId };
+    const newAnswers = { ...answers, [currentSteps[currentStep].id]: optionId };
     setAnswers(newAnswers);
 
-    if (currentStep < steps.length - 1) {
+    if (currentStep < currentSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
       setIsFinished(true);
@@ -55,111 +87,136 @@ export default function RealityCheckTool() {
   };
 
   const generatePayload = () => {
-    const type = steps[0].options.find(o => o.id === answers.type)?.label;
-    const size = steps[1].options.find(o => o.id === answers.size)?.label;
-    const priority = steps[2].options.find(o => o.id === answers.priority)?.label;
+    const typeLabel = currentSteps[0].options.find(o => o.id === answers.type)?.label;
 
-    return `Hi Tanya! I just used your Reality Check tool. I have a ${type} (${size}). My main focus is ${priority}. Could I get a quote for a Saturday visit?`;
+    if (answers.type === "commercial") {
+      const bType = currentSteps[1].options.find(o => o.id === answers.businessType)?.label;
+      const freq = currentSteps[2].options.find(o => o.id === answers.frequency)?.label;
+      return `Hi Tanya! I have a ${bType} in Omaha. Looking for ${freq} commercial cleaning. Could we set up a walkthrough?`;
+    }
+
+    const size = currentSteps[1].options.find(o => o.id === answers.size)?.label;
+    const priority = currentSteps[2].options.find(o => o.id === answers.priority)?.label;
+    return `Hi Tanya! I'd love a quote for my ${size} home. I'm especially interested in ${priority}. When are you free for a Saturday visit?`;
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatePayload());
-    alert("Message copied! You can now paste it into your text app.");
   };
 
   return (
-    <main className="min-h-screen bg-bg-warm flex flex-col items-center justify-center p-4">
-      <Link href="/" className="absolute top-8 left-8 text-primary font-bold flex items-center gap-2">
-        ← Back to Home
+    <main className="min-h-screen bg-bg-dark flex flex-col items-center justify-center p-6 selection:bg-primary/30">
+      <Link href="/" className="absolute top-8 left-8 text-primary font-bold flex items-center gap-2 hover:-translate-x-1 transition-transform">
+        <ArrowRight className="rotate-180" size={18} />
+        Back to Home
       </Link>
 
-      <div className="w-full max-w-xl bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-12 overflow-hidden relative">
+      <div className="w-full max-w-xl bg-bg-card rounded-[3rem] border border-white/5 shadow-2xl p-10 md:p-16 overflow-hidden relative">
         <AnimatePresence mode="wait">
           {!isFinished ? (
             <motion.div
               key={currentStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-8"
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -50, scale: 1.05 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="space-y-10"
             >
-              <div className="space-y-2">
-                <p className="text-accent-sage font-bold uppercase tracking-widest text-xs">
-                  Step {currentStep + 1} of {steps.length}
-                </p>
-                <h1 className="text-3xl font-serif font-bold text-[#2d1e1a]">
-                  {steps[currentStep].title}
+              <div className="space-y-3">
+                <div className="flex items-center gap-4">
+                  <div className="h-0.5 flex-1 bg-white/5 overflow-hidden rounded-full">
+                    <motion.div
+                      className="h-full bg-primary"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((currentStep + 1) / currentSteps.length) * 100}%` }}
+                      transition={{ duration: 0.8, ease: "circOut" }}
+                    />
+                  </div>
+                  <span className="text-accent-sage font-black uppercase tracking-[0.3em] text-[10px]">
+                    Step {currentStep + 1}/{currentSteps.length}
+                  </span>
+                </div>
+                <h1 className="text-4xl lg:text-5xl font-serif font-bold text-text-soft leading-tight">
+                  {currentSteps[currentStep].title}
                 </h1>
               </div>
 
               <div className="grid gap-4">
-                {steps[currentStep].options.map((option) => (
+                {currentSteps[currentStep].options.map((option) => (
                   <button
                     key={option.id}
                     onClick={() => handleSelect(option.id)}
-                    className="flex items-center gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-all text-left group"
+                    className="flex items-center gap-6 p-7 rounded-4xl border border-white/5 bg-white/2 hover:border-primary/40 hover:bg-primary/5 transition-all text-left group active:scale-[0.98]"
                   >
-                    {option.icon && (
-                      <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                    {option.icon ? (
+                      <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500">
                         {option.icon}
                       </div>
+                    ) : (
+                      <div className="w-8 h-8 rounded-full border-2 border-primary/20 flex items-center justify-center group-hover:border-primary transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      </div>
                     )}
-                    <span className="text-lg font-bold text-gray-700">{option.label}</span>
-                    <ArrowRight className="ml-auto text-gray-300 group-hover:text-primary transition-colors" size={20} />
+                    <span className="text-xl font-bold text-text-soft/80 group-hover:text-text-soft transition-colors">{option.label}</span>
+                    <ArrowRight className="ml-auto text-white/10 group-hover:text-primary group-hover:translate-x-2 transition-all" size={24} />
                   </button>
                 ))}
               </div>
             </motion.div>
           ) : (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center space-y-8"
+              transition={{ type: "spring", bounce: 0.4 }}
+              className="text-center space-y-10"
             >
-              <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Check size={40} />
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150 animate-pulse"></div>
+                <div className="w-24 h-24 bg-primary text-bg-dark rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 relative z-10 shadow-2xl">
+                  <Check size={48} strokeWidth={3} />
+                </div>
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-4xl font-serif font-bold text-[#2d1e1a]">Reality Check Complete</h1>
-                <p className="text-gray-600 text-lg">
-                  Tanya is ready for you. Based on your answers, we've prepared a message for her.
+                <h1 className="text-5xl font-serif font-bold text-text-soft leading-tight">Ready to Sparkle</h1>
+                <p className="text-text-soft/40 text-lg font-medium">
+                  We've built your perfect request. One tap to relief.
                 </p>
               </div>
 
-              <div className="bg-bg-warm p-6 rounded-2xl text-left border border-primary/10 relative group">
-                <p className="text-sm font-sans italic text-gray-700 leading-relaxed pr-8">
+              <div className="bg-bg-dark/50 p-8 rounded-[2.5rem] text-left border border-white/5 relative group overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                   <MessageSquare size={40} className="text-primary" />
+                </div>
+                <p className="text-lg font-serif italic text-text-soft/80 leading-relaxed relative z-10 pr-12">
                   "{generatePayload()}"
                 </p>
-                <button
-                  onClick={copyToClipboard}
-                  className="absolute top-4 right-4 text-primary hover:scale-110 transition-transform"
-                  title="Copy to clipboard"
-                >
-                  <MessageSquare size={20} />
-                </button>
+                <div className="mt-6 flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+                  <Check size={14} /> Text payload generated
+                </div>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <a
                   href={`sms:+14020000000?body=${encodeURIComponent(generatePayload())}`}
-                  className="bg-primary text-white p-6 rounded-2xl text-xl font-bold hover:scale-[1.02] transition-transform shadow-xl shadow-primary/20 flex items-center justify-center gap-3"
+                  onClick={copyToClipboard}
+                  className="bg-primary text-bg-dark p-7 rounded-4xl text-2xl font-black hover:scale-[1.02] transition-all shadow-2xl shadow-primary/30 flex items-center justify-center gap-4 active:scale-95"
                 >
-                  <MessageSquare size={24} />
-                  Send Text to Tanya Now
+                  <MessageSquare size={28} />
+                  Send to Tanya Now
                 </a>
                 <button
                   onClick={() => { setCurrentStep(0); setIsFinished(false); setAnswers({}); }}
-                  className="text-gray-400 font-bold text-sm hover:text-primary transition-colors"
+                  className="text-text-soft/20 font-bold text-sm hover:text-primary transition-colors tracking-widest uppercase"
                 >
                   Start over
                 </button>
               </div>
 
-              <div className="bg-accent-sage/5 p-4 rounded-xl flex gap-3 text-left">
-                <AlertCircle className="text-accent-sage shrink-0" size={20} />
-                <p className="text-xs text-accent-sage/80 leading-tight">
-                  <strong>Pro Tip:</strong> Tanya usually responds within an hour. Sending 2-3 photos right after this text helps her give you a firm quote even faster!
+              <div className="bg-accent-sage/5 p-6 rounded-4xl flex gap-4 text-left border border-accent-sage/10">
+                <AlertCircle className="text-accent-sage shrink-0" size={24} />
+                <p className="text-sm text-accent-sage/60 font-medium leading-relaxed">
+                  <strong>Tanya's Pro Tip:</strong> Most quotes are finished in under 60 minutes. Feel free to snap 2-3 photos of your space right after sending this text!
                 </p>
               </div>
             </motion.div>

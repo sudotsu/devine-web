@@ -42,12 +42,15 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-bg-warm">
-      <header className="py-20 bg-white/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4 text-center">
-          <Link href="/" className="text-primary font-bold mb-4 inline-block hover:underline">← Home</Link>
-          <h1 className="text-5xl font-serif font-bold text-[#2d1e1a]">Plain Language Services</h1>
-          <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">No confusing packages. Just clear, professional results for every corner of your life.</p>
+    <main className="min-h-screen bg-bg-dark text-text-soft selection:bg-primary/30">
+      <header className="py-24 lg:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-125 h-125 bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <Link href="/" className="text-primary font-bold mb-10 inline-flex items-center gap-2 hover:opacity-70 transition-opacity uppercase tracking-widest text-xs">
+            ← Back to Home
+          </Link>
+          <h1 className="text-6xl lg:text-7xl font-serif font-bold text-text-soft leading-tight">Plain Language Services</h1>
+          <p className="mt-6 text-xl text-text-soft/40 max-w-2xl mx-auto font-medium">No confusing packages. Just clear, professional results for every corner of your life.</p>
         </div>
       </header>
 
@@ -55,15 +58,15 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((s, i) => (
-              <div key={i} className="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all border border-primary/5 group">
-                <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+              <div key={i} className="group flex flex-col bg-bg-card p-10 rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-bg-dark transition-all duration-500 border border-white/5 group-hover:border-primary/20">
                   {s.icon}
                 </div>
-                <h2 className="text-2xl font-serif font-bold mb-4">{s.title}</h2>
-                <p className="text-gray-600 mb-8 leading-relaxed">{s.desc}</p>
-                <ul className="space-y-3 mb-10">
+                <h2 className="text-3xl font-serif font-bold mb-5 text-text-soft">{s.title}</h2>
+                <p className="text-text-soft/50 mb-10 leading-relaxed font-medium">{s.desc}</p>
+                <ul className="space-y-4 mb-auto">
                   {s.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                    <li key={j} className="flex items-center gap-4 text-sm font-bold text-text-soft/60 tracking-tight">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                       {f}
                     </li>
@@ -71,24 +74,31 @@ export default function ServicesPage() {
                 </ul>
                 <a
                   href={`sms:+14020000000?body=${encodeURIComponent(`Hi Tanya, I'm interested in ${s.title}.`)}`}
-                  className="flex items-center justify-between w-full font-bold text-primary border-t border-primary/10 pt-6 group-hover:translate-x-1 transition-transform"
+                  className="flex items-center justify-between w-full font-black text-xs uppercase tracking-widest text-primary border-t border-white/5 pt-10 mt-12 group-hover:translate-x-1 transition-transform"
                 >
-                  Text Tanya about this
-                  <ArrowRight size={20} />
+                  Contact About This
+                  <ArrowRight size={18} />
                 </a>
               </div>
             ))}
           </div>
 
-          <div className="mt-20 bg-primary text-white p-12 rounded-[3rem] text-center shadow-2xl shadow-primary/20">
-            <h2 className="text-3xl font-serif font-bold mb-4">Need something else?</h2>
-            <p className="text-primary-foreground/80 mb-8 text-lg">We handle car interiors, specific room deep-cleans, and more. Just ask.</p>
-            <a
-              href="sms:+14020000000"
-              className="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg inline-block hover:scale-105 transition-transform"
-            >
-              Text Tanya Now
-            </a>
+          <div className="mt-32 relative group">
+            <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-[3rem] -z-10 animate-pulse"></div>
+            <div className="bg-primary text-bg-dark p-16 lg:p-24 rounded-[3.5rem] text-center shadow-2xl shadow-primary/40 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-12 opacity-10 rotate-12">
+                <SprayCan size={200} />
+              </div>
+              <h2 className="text-5xl lg:text-6xl font-serif font-bold mb-6">Need something else?</h2>
+              <p className="text-bg-dark/60 mb-12 text-xl font-bold max-w-xl mx-auto">We handle car interiors, specific room deep-cleans, and custom Omaha projects. Just ask.</p>
+              <a
+                href="sms:+14020000000"
+                className="bg-bg-dark text-primary px-12 py-5 rounded-full font-black text-xl inline-flex items-center gap-3 hover:scale-105 transition-all shadow-2xl active:scale-95"
+              >
+                Text Tanya Now
+                <ArrowRight size={24} />
+              </a>
+            </div>
           </div>
         </div>
       </section>
