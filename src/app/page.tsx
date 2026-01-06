@@ -25,7 +25,7 @@ export default function Home() {
 
           <a
             href="sms:+14020000000"
-            className="group bg-primary text-bg-dark px-7 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-all shadow-xl shadow-primary/20 active:scale-95"
+            className="group bg-primary text-bg-dark px-7 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-all shadow-xl shadow-primary/20 active:scale-95 border border-transparent hover:border-accent-pink/50"
           >
             <MessageSquare size={18} className="group-hover:rotate-12 transition-transform" />
             Text Tanya
@@ -56,7 +56,7 @@ export default function Home() {
             <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
               <a
                 href="sms:+14020000000"
-                className="bg-primary text-bg-dark px-10 py-5 rounded-full text-lg font-black flex items-center justify-center gap-2 shadow-2xl shadow-primary/40 hover:brightness-110 transition-all hover:scale-[1.02]"
+                className="bg-primary text-bg-dark px-10 py-5 rounded-full text-lg font-black flex items-center justify-center gap-2 shadow-2xl shadow-primary/40 hover:brightness-110 transition-all hover:scale-[1.02] border border-transparent hover:border-accent-pink/50"
               >
                 Text Tanya for a Quote
               </a>
@@ -74,7 +74,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-primary/20 rounded-[4rem] rotate-6 blur-2xl group-hover:rotate-12 transition-transform duration-700"></div>
             <div className="relative aspect-square w-full max-w-lg mx-auto overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-bg-card flex items-center justify-center text-text-soft/20 italic">
               <div className="absolute inset-0 bg-linear-to-tr from-bg-dark/80 via-transparent to-transparent z-10"></div>
-              [Photo of Tanya in a sunlit Omaha home]
+              <img src="/tanya-hero-placeholder.png" alt="Tanya's Professional Cleaning" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-4000" />
             </div>
             {/* Trust Badge Floating */}
             <div className="absolute -bottom-6 -right-6 bg-bg-card p-6 rounded-3xl border border-accent-pink/5 shadow-2xl animate-float hover:scale-105 transition-transform duration-500">
@@ -121,7 +121,7 @@ export default function Home() {
                 icon: <Clock className="text-primary" size={32} />
               }
             ].map((item, i) => (
-              <div key={i} className="group relative p-10 rounded-[2.5rem] bg-bg-card/50 border border-white/5 hover:border-primary/30 transition-all duration-500 hover:-translate-y-2">
+              <div key={i} className="group relative p-10 rounded-[2.5rem] bg-bg-card/50 border border-white/5 hover:border-accent-pink/50 transition-all duration-500 hover:-translate-y-2">
                 <div className="absolute top-6 right-8 text-6xl font-serif font-black text-white/5 group-hover:text-primary/10 transition-colors uppercase">{item.step}</div>
                 <div className="w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-primary/10">
                   {item.icon}
